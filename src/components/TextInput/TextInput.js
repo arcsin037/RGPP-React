@@ -3,6 +3,7 @@ import styles from './TextInput.scss'
 
 export const TextInput = props => (
   <input
+    className={styles.TextInput}
     type='text'
     value={props.value}
     onChange={props.handleChange}

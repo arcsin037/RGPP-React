@@ -3,6 +3,7 @@ import styles from './NumberInput.scss'
 
 export const NumberInput = props => (
   <input
+    className={styles.NumberInput}
     type='number'
     value={props.value}
     onChange={props.handleChange}
