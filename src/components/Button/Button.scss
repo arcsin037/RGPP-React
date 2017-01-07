@@ -1,0 +1,15 @@
+$button-width: 32px;
+$button-height: 32px;
+
+.Button {
+  width: $button-width;
+  height: $button-height;
+  padding: 0;
+  margin: 0 2px;
+  border-style: none;
+
+  cursor: pointer;
+
+  &:hover {
+  }
+}
