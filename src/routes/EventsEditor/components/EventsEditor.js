@@ -4,10 +4,7 @@ import styles from './EventsEditor.scss'
 export class EventsEditor extends React.Component {
   addEvent = () => {
     const { updateEvents, events } = this.props
-    updateEvents(events.addEvent({
-      id: 0,
-      name: 'Event'
-    }))
+    updateEvents(events.addEvent())
   }
 
   removeEvent = () => {
@@ -21,9 +18,9 @@ export class EventsEditor extends React.Component {
     const eventlistElm = (
       <div>
         {eventlist.map(event => (
-          <div key={event.id}>
-            <p className={'lead'}>{event.id}</p>
-            <p>{event.name}</p>
+          <div key={event.get('id')}>
+            <p className={'lead'}>{event.get('id')}</p>
+            <p>{event.get('name')}</p>
           </div>
         ))}
       </div>
