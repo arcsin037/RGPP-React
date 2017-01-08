@@ -1,10 +1,10 @@
-import CounterRoute from 'routes/<%= pascalEntityName %>'
+import <%= pascalEntityName %>Route from 'routes/<%= pascalEntityName %>'
 
 describe('(Route) <%= pascalEntityName %>', () => {
   let _route
 
   beforeEach(() => {
-    _route = CounterRoute({})
+    _route = <%= pascalEntityName %>Route({})
   })
 
   it('Should return a route configuration object', () => {

@@ -1,14 +1,18 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
 import Setting from './Setting'
 import { shallow } from 'enzyme'
-import { initialState, updateSetting } from 'redux/modules/setting'
+import { initialState } from 'redux/modules/setting'
 
 describe('(Component) Setting', () => {
-  let _wrapper
+  let _props, _spies, _wrapper
   beforeEach(() => {
-    const _props = {
+    _spies = {}
+    _props = {
       setting: initialState,
-      updateSetting
+      ...bindActionCreators({
+        updateSetting: (_spies.updateSetting = sinon.spy())
+      }, _spies.dispatch = sinon.spy())
     }
     _wrapper = shallow(<Setting {..._props} />)
   })

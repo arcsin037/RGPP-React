@@ -8,6 +8,10 @@ const Header = props => (
       Edit
     </Link>
     {' · '}
+    <Link to='/events-editor' activeClassName='route--active'>
+      Events Editor
+    </Link>
+    {' · '}
     <Link to='/setting' activeClassName='route--active'>
       Setting
     </Link>

@@ -1,4 +1,4 @@
-import { Record } from 'immutable'
+import { Record, OrderedMap } from 'immutable'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -22,9 +22,18 @@ const actionHandlers = {
 // ------------------------------------
 // Model
 // ------------------------------------
-const EventsRecord = Record([])
+const EventsRecord = Record({
+  list: OrderedMap()
+})
 
 class Events extends EventsRecord {
+  addEvent (event) {
+    return this.set('list', this.list.set(event.id, event))
+  }
+
+  removeEvent (id) {
+    return this.set('list', this.list.delete(id))
+  }
 }
 
 // ------------------------------------

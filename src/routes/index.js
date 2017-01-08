@@ -1,6 +1,7 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import EditRoute from './Edit'
+import EventsEditorRoute from './EventsEditor'
 import SettingRoute from './Setting'
 
 /*  Note: Instead of using JSX, we recommend using react-router
@@ -12,6 +13,7 @@ export const createRoutes = (store) => ({
   indexRoute: EditRoute(store),
   childRoutes: [
     EditRoute(store),
+    EventsEditorRoute(store),
     SettingRoute(store)
   ]
 })
