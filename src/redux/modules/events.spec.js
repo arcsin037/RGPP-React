@@ -40,14 +40,14 @@ describe('(Redux) events', () => {
       expect(_instance).to.be.ok
     })
     it('Should set default value', () => {
-      expect(_instance.get('selectedIds')).to.eql(0)
+      expect(_instance.get('selectedId')).to.eql('0')
       expect(_instance.get('list')).to.eql(OrderedMap())
     })
     it('Should selectEvent', () => {
       _instance = _instance.selectEvent(1)
-      expect(_instance.get('selectedIds')).to.eql(1)
+      expect(_instance.get('selectedId')).to.eql('1')
       _instance = _instance.selectEvent(5)
-      expect(_instance.get('selectedIds')).to.eql(5)
+      expect(_instance.get('selectedId')).to.eql('5')
     })
     it('Should add and remove event', () => {
       _instance = _instance.addEvent()

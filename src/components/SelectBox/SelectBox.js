@@ -10,13 +10,14 @@ import styles from './SelectBox.scss'
  */
 
 const SelectBox = (props) => {
+  if (props.options.length === 0) return null
   const options = props.options.map((option) => (
-    <option key={option.name} value={option.value} selected={option.selected}>
+    <option key={option.name} value={option.value}>
       {option.name}
     </option>
   ))
   return (
-    <select className={styles.SelectBox} defaultValue={props.defaultValue} onChange={props.handleChange}>
+    <select className={styles.SelectBox} value={props.defaultValue} onChange={props.handleChange}>
       {options}
     </select>
   )

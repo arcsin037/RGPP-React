@@ -7,7 +7,7 @@ describe('(Component) SelectBox', () => {
   beforeEach(() => {
     const _props = {
       options: [
-        { value: '0', name: 'name 0', selected: true },
+        { value: '0', name: 'name 0' },
         { value: '1', name: 'name 1' }
       ],
       defaultValue: 0
@@ -18,6 +18,6 @@ describe('(Component) SelectBox', () => {
     expect(_wrapper.is('select')).to.equal(true)
   })
   it('Should have props', () => {
-    expect(_wrapper.prop('defaultValue')).to.equal(0)
+    expect(_wrapper.prop('value')).to.equal(0)
   })
 })
