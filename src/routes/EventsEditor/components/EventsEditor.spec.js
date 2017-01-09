@@ -23,7 +23,26 @@ describe('(Component) EventsEditor', () => {
     let _button
 
     beforeEach(() => {
-      _button = _wrapper.find('button').filterWhere(a => a.text() === 'Add Event')
+      _button = _wrapper.find('button').filterWhere(a => a.text() === '+')
+    })
+
+    it('has bootstrap classes', () => {
+      expect(_button.hasClass('btn btn-default')).to.be.true
+    })
+
+    it('Should dispatch a `add Event` action when clicked', () => {
+      _spies.dispatch.should.have.not.been.called
+
+      _button.simulate('click')
+
+      _spies.updateEvents.should.have.been.called
+    })
+  })
+  describe('An remove event button...', () => {
+    let _button
+
+    beforeEach(() => {
+      _button = _wrapper.find('button').filterWhere(a => a.text() === '-')
     })
 
     it('has bootstrap classes', () => {

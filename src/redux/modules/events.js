@@ -1,6 +1,6 @@
 import { Record, OrderedMap } from 'immutable'
 import { getNotExistMinPositiveInt } from 'utils/NumberUtil'
-import Event from 'models/Event'
+import Event, { EVENT_TYPE_NORMAL } from 'models/Event'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -25,10 +25,11 @@ const actionHandlers = {
 // Model
 // ------------------------------------
 const EventsRecord = Record({
+  selectedIds: 0,
   list: OrderedMap()
 })
 
-class Events extends EventsRecord {
+export class Events extends EventsRecord {
   addEvent () {
     const eventlist = this.get('list').toArray()
     const eventIdArray = eventlist.map(event => event.get('id'))
@@ -36,9 +37,13 @@ class Events extends EventsRecord {
     const event = new Event({
       id: newId,
       name: `Event ${newId}`,
-      type: 'default'
+      type: EVENT_TYPE_NORMAL
     })
-    return this.set('list', this.list.set(newId, event))
+    return this.set('list', this.list.set(newId, event).sort((a, b) => a.get('id') - b.get('id')))
+  }
+
+  selectEvent (id) {
+    return this.set('selectedIds', id)
   }
 
   removeEvent (id) {
