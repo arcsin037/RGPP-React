@@ -15,12 +15,16 @@ export class Events extends IdOrderedMap {
       name: `Event ${newId}`,
       type: EVENT_TYPE_NORMAL
     }
-    return this.add(newEvent).select(newId)
+    return this.setItem(newId, newEvent).select(newId)
   }
 
   removeEvent (removeId) {
-    const newEvents = this.remove(removeId)
+    const newEvents = this.deleteItem(removeId)
     return newEvents.select(getMinId(newEvents))
+  }
+
+  updateEvent (id, event) {
+    return this.setItem(id, event)
   }
 }
 

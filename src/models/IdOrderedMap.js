@@ -45,11 +45,11 @@ class IdOrderedMap extends IdOrderedMapRecord {
     super(state && sortStateById(state))
   }
 
-  add (item) {
-    return this.set(ITEMS_KEY, this.get(ITEMS_KEY).set(`${item.id}`, Map(item)).sort(sortedById))
+  setItem (id, item) {
+    return this.set(ITEMS_KEY, this.get(ITEMS_KEY).set(`${id}`, Map(item)).sort(sortedById))
   }
 
-  remove (id) {
+  deleteItem (id) {
     return this.set(ITEMS_KEY, this.get(ITEMS_KEY).delete(`${id}`))
   }
 

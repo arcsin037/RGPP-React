@@ -23,7 +23,12 @@ export class EventsEditor extends React.Component {
 
   setEventName = e => {
     const { updateEvents, events } = this.props
-    updateEvents(events.updateEvent(e.target.value))
+    const selectedId = events.getSelectedId()
+    const selectedEvent = events.getSelectedItem()
+    updateEvents(events.updateEvent(
+      selectedId,
+      selectedEvent.set('name', e.target.value)
+    ))
   }
 
   render () {
@@ -34,7 +39,7 @@ export class EventsEditor extends React.Component {
     const options = eventlist.toArray().map(event => {
       const id = event.get('id').toString()
       return {
-        name: event.get('name'),
+        name: `${id} : ${event.get('name')}`,
         value: id
       }
     })

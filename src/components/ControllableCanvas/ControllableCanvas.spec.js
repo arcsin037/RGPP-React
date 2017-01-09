@@ -4,7 +4,11 @@ import { shallow } from 'enzyme'
 
 describe('(Component) ControllableCanvas', () => {
   it('Should render as a <div>', () => {
-    const wrapper = shallow(<ControllableCanvas />)
+    const props = {
+      width: 640,
+      height: 480
+    }
+    const wrapper = shallow(<ControllableCanvas {...props} />)
     expect(wrapper.is('Canvas')).to.equal(true)
   })
 })
