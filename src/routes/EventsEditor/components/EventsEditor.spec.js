@@ -2,14 +2,14 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import EventsEditor from './EventsEditor'
 import { shallow } from 'enzyme'
-import { initialState } from 'redux/modules/events'
+import Events from 'models/Events'
 
 describe('(Component) EventsEditor', () => {
   let _props, _spies, _wrapper
   beforeEach(() => {
     _spies = {}
     _props = {
-      events: initialState,
+      events: new Events(),
       ...bindActionCreators({
         updateEvents: (_spies.updateEvents = sinon.spy())
       }, _spies.dispatch = sinon.spy())

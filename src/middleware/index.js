@@ -1,5 +1,6 @@
 import thunk from 'redux-thunk'
 import { save } from 'redux-localstorage-simple'
+// import persistState from 'redux-localstorage'
 
 // ======================================================
 // Middleware Configuration
@@ -29,4 +30,6 @@ export default [
 // ======================================================
 // Store Enhancers
 // ======================================================
-export const enhancers = []
+export const enhancers = [
+  // persistState()
+]
