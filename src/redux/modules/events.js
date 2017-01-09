@@ -29,7 +29,7 @@ const EventsRecord = Record({
 
 export class Events extends EventsRecord {
   addEvent (event) {
-    return this.set('list', this.list.set(`${event.id}`, Map(event)))
+    return this.set('list', this.list.set(`${event.id}`, Map(event)).sort((a, b) => a.get('id') - b.get('id')))
   }
 
   selectEvent (id) {

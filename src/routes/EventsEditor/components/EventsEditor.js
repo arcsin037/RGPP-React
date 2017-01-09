@@ -4,13 +4,13 @@ import SelectBox from 'components/SelectBox'
 import TextInput from 'components/TextInput'
 import Table from 'components/Table'
 import { EVENT_TYPE_NORMAL } from 'models/Event'
-import { getNotExistMinPositiveInt, getMinPositiveInt } from 'utils/NumberUtil'
+import { getNotExistMinUInt, getMinUInt } from 'utils/UIntArrayUtil'
 
 export class EventsEditor extends React.Component {
   addEvent = () => {
     const { updateEvents, events } = this.props
-    const eventIdArray = this.getEventIdArray(this.props)
-    const newId = getNotExistMinPositiveInt(eventIdArray)
+    const eventIdArray = this.getEventIdArray(events)
+    const newId = getNotExistMinUInt(eventIdArray)
 
     const newEvent = {
       id: newId,
@@ -28,9 +28,10 @@ export class EventsEditor extends React.Component {
   removeEvent = () => {
     const { updateEvents, events } = this.props
     const removeId = events.get('selectedId')
-    const eventIdArray = this.getEventIdArray(this.props)
-    const selectedId = getMinPositiveInt(eventIdArray)
-    updateEvents(events.removeEvent(removeId).selectEvent(selectedId))
+    let newEvents = events.removeEvent(removeId)
+    const eventIdArray = this.getEventIdArray(newEvents)
+    const selectedId = getMinUInt(eventIdArray)
+    updateEvents(newEvents.selectEvent(selectedId))
   }
 
   setEventName = e => {
@@ -38,8 +39,7 @@ export class EventsEditor extends React.Component {
     updateEvents(events.updateEvent(e.target.value))
   }
 
-  getEventIdArray (props) {
-    const { events } = props
+  getEventIdArray (events) {
     const eventlist = events.get('list').toArray()
     return eventlist.map(event => event.get('id'))
   }
