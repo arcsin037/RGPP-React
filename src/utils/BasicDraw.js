@@ -37,3 +37,32 @@ export const drawImage = (ctx, img, option) => {
   } = option
   ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh)
 }
+
+// draw arc
+export const drawArc = (ctx, option = {}) => {
+  const {
+    x = 0,
+    y = 0,
+    radius = 0,
+    startAngle = 0,
+    endAngle = Math.PI * 2,
+    anticlockwise = false,
+    isFill = false
+  } = option
+
+  ctx.save()
+  ctx.beginPath()
+  ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+  if (isFill) {
+    ctx.fill()
+  } else {
+    ctx.stroke()
+  }
+  ctx.resotre()
+}
+
+// drawCircle
+export const drawCircle = (ctx, option = {}) => {
+  const { x, y, radius, isFill } = option
+  drawArc(ctx, { x, y, radius, isFill })
+}

@@ -17,7 +17,7 @@ export const logger = (store) => (next) => (action) => {
 }
 
 export const persistStatesConfig = {
-  states: ['setting', 'events'],
+  states: ['setting', 'events', 'scenes'],
   namespace: 'RGPP'
 }
 

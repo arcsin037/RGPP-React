@@ -42,7 +42,7 @@ const IdOrderedMapRecord = Record(initialState)
 
 class IdOrderedMap extends IdOrderedMapRecord {
   constructor (state) {
-    super(state && sortStateById(state))
+    (state instanceof Map) ? super(sortStateById(state)) : super()
   }
 
   setItem (id, item) {
